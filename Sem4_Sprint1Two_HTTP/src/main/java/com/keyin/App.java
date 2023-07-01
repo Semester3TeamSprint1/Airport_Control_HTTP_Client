@@ -3,7 +3,7 @@ package com.keyin;
 import com.keyin.http.cli.HTTPRestCLIApplication;
 import com.keyin.http.client.RESTClient;
 
-public class ClientRunner {
+public class App {
     public static void main(String[] args) {
 
         // make a switch statement here to take in commandline arguments ***********************************************
