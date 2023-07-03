@@ -21,6 +21,48 @@ public class HTTPRestCLIApplication {
     }
 
     // Aircraft methods
+
+    public String generateAircraftReport() {
+        List<Aircraft> aircraftList = getRestClient().getAllAircraft();
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < aircraftList.size(); i++) {
+            Aircraft aircraft = aircraftList.get(i);
+            report.append(aircraft.getType())
+                    .append(" - ")
+                    .append(aircraft.getAirlineName());
+
+            if (i != aircraftList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+        System.out.println("----------------Aircrafts----------------");
+        System.out.println(reportString);
+        return reportString;
+    }
+
+    public String getAircraftByIdReport(int id) {
+        Aircraft aircraft = getRestClient().getAircraftById(id);
+        StringBuilder report = new StringBuilder();
+
+        if (aircraft.getType() != null) {
+            report.append(aircraft.getType())
+                    .append(" - ")
+                    .append(aircraft.getAirlineName());
+
+            String reportString = report.toString();
+            System.out.println("Aircraft ID: " + id);
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("There are no aircrafts linked with ID No. " + id);
+            return "";
+        }
+    }
+
+    /* TODO: remove if above works.
     public String generateAircraftReport() {
         List<Aircraft> aircraftList = getRestClient().getAllAircraft();
         StringBuffer report = new StringBuffer();
@@ -54,9 +96,75 @@ public class HTTPRestCLIApplication {
 
         return report.toString();
     }
+*/
+   // Airport methods
+    public String generateAirportReport() {
+        List<Airport> airportList = getRestClient().getAllAirport();
+        StringBuilder report = new StringBuilder();
 
-    //------------------------------------------------------------------------------------------------------------------
-    // Airport methods
+        for (int i = 0; i < airportList.size(); i++) {
+            Airport airport = airportList.get(i);
+            report.append(airport.getName())
+                    .append(" - ")
+                    .append(airport.getId());
+
+            if (i != airportList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+        System.out.println("----------------Airports----------------");
+        System.out.println(reportString);
+        return reportString;
+    }
+
+    public String getAirportByIdReport(int id) {
+        Airport airport = getRestClient().getAirportById(id);
+        StringBuilder report = new StringBuilder();
+
+        if (airport.getName() != null) {
+            report.append(airport.getName())
+                    .append(" - ")
+                    .append(airport.getId());
+
+            String reportString = report.toString();
+            System.out.println("Airport ID: " + id);
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("There are no airports linked with ID No. " + id);
+            return "";
+        }
+    }
+
+    public String getAirportsByCityIdReport(int id) {
+        List<Airport> airportList = getRestClient().getAirportsByCityId(id);
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < airportList.size(); i++) {
+            Airport airport = airportList.get(i);
+            report.append(airport.getName())
+                    .append(" - ")
+                    .append(airport.getId());
+
+            if (i != airportList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+
+        if (report.length() <= 0) {
+            System.out.println("There are no airports in the city linked with ID No. " + id);
+        } else {
+            System.out.println("All airports in the city linked with ID No. " + id);
+            System.out.println(reportString);
+        }
+
+        return reportString;
+    }
+/* todo remove if above works.
 
     public String generateAirportReport() {
         List<Airport> airportList = getRestClient().getAllAirport();
@@ -113,9 +221,48 @@ public class HTTPRestCLIApplication {
         }
         return report.toString();
     }
+ */
+  // City methods
+public String generateCityReport() {
+    List<City> cityList = getRestClient().getAllCity();
+    StringBuilder report = new StringBuilder();
 
-    //------------------------------------------------------------------------------------------------------------------
-    // City methods
+    for (int i = 0; i < cityList.size(); i++) {
+        City city = cityList.get(i);
+        report.append(city.getName())
+                .append(" - ")
+                .append(city.getProvince());
+
+        if (i != cityList.size() - 1) {
+            report.append(", ");
+        }
+    }
+
+    String reportString = report.toString();
+    System.out.println("----------------Cities----------------");
+    System.out.println(reportString);
+    return reportString;
+}
+
+    public String getCityByIdReport(int id) {
+        City city = getRestClient().getCityById(id);
+        StringBuilder report = new StringBuilder();
+
+        if (city.getName() != null) {
+            report.append(city.getName())
+                    .append(" - ")
+                    .append(city.getProvince());
+
+            String reportString = report.toString();
+            System.out.println("City linked with ID No. " + id);
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("There is no city linked with ID No. " + id);
+            return "";
+        }
+    }
+    /* todo: remove if above works
 
     public String generateCityReport() {
         List<City> cityList = getRestClient().getAllCity();
@@ -149,9 +296,107 @@ public class HTTPRestCLIApplication {
         }
         return report.toString();
     }
+     */
+   // Passenger methods
 
-    //------------------------------------------------------------------------------------------------------------------
-    // Passenger methods
+    public String generatePassengerReport() {
+        List<Passenger> passengerList = getRestClient().getAllPassenger();
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < passengerList.size(); i++) {
+            Passenger passenger = passengerList.get(i);
+            report.append(passenger.getFirstname())
+                    .append(" ")
+                    .append(passenger.getLastName())
+                    .append(" - ")
+                    .append(passenger.getPhoneNumber());
+
+            if (i != passengerList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+        System.out.println("----------------Passengers----------------");
+        System.out.println(reportString);
+        return reportString;
+    }
+
+    public String getPassengerByIdReport(int id) {
+        Passenger passenger = getRestClient().getPassengerById(id);
+        StringBuilder report = new StringBuilder();
+
+        if (passenger.getFirstname() != null) {
+            report.append(passenger.getFirstname())
+                    .append(" ")
+                    .append(passenger.getLastName())
+                    .append(" - ")
+                    .append(passenger.getPhoneNumber());
+
+            String reportString = report.toString();
+            System.out.println("Passenger linked with ID No. " + id);
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("There is no passenger linked with ID No. " + id);
+            return "";
+        }
+    }
+
+    public String getAircraftPassengerBeenOnReport(int id) {
+        List<Aircraft> aircraftList = getRestClient().getAircraftPassengerBeenOn(id);
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < aircraftList.size(); i++) {
+            Aircraft aircraft = aircraftList.get(i);
+            report.append(aircraft.getType())
+                    .append(" - ")
+                    .append(aircraft.getAirlineName());
+
+            if (i != aircraftList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+
+        if (report.length() <= 0) {
+            System.out.println("The passenger linked with ID No. " + id + " has no flight record.");
+        } else {
+            System.out.println("----------------Passenger ID No. " + id + " linked aircrafts----------------");
+            System.out.println(reportString);
+        }
+
+        return reportString;
+    }
+
+    public String getAirportPassengerVisitedReport(int id) {
+        List<Airport> airportList = getRestClient().getAirportPassengerVisited(id);
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < airportList.size(); i++) {
+            Airport airport = airportList.get(i);
+            report.append(airport.getName())
+                    .append(" - ")
+                    .append(airport.getId());
+
+            if (i != airportList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+
+        if (report.length() <= 0) {
+            System.out.println("The passenger linked with ID No. " + id + " has no airport attendance.");
+        } else {
+            System.out.println("----------------Passenger ID No. " + id + " linked airports----------------");
+            System.out.println(reportString);
+        }
+
+        return reportString;
+    }
+/* todo remove if above works.
 
     public String generatePassengerReport() {
         List<Passenger> passengerList = getRestClient().getAllPassenger();
@@ -234,10 +479,102 @@ public class HTTPRestCLIApplication {
         }
         return report.toString();
     }
+ */
 
+   // Actions
+   public String getBrowserPeekReport() {
+       Browser browser = getRestClient().getBrowserPeek();
 
-    //------------------------------------------------------------------------------------------------------------------
-    // Actions
+       StringBuilder report = new StringBuilder();
+       report.append(browser.getCalledMethod())
+               .append(" - ")
+               .append(browser.getUrl())
+               .append(" - ")
+               .append(browser.getTimestamp());
+
+       if (browser.getCalledMethod() != null) {
+           String reportString = report.toString();
+           System.out.println("The last request made to the server:");
+           System.out.println(reportString);
+           return reportString;
+       } else {
+           System.out.println("No requests have been made to the server yet. The browser stack is empty.");
+           return "";
+       }
+   }
+
+    public String getBrowserDataReport() {
+        List<Browser> browserList = getRestClient().getBrowserData();
+        StringBuilder report = new StringBuilder();
+
+        for (int i = 0; i < browserList.size(); i++) {
+            Browser browser = browserList.get(i);
+            report.append(browser.getCalledMethod())
+                    .append(" - ")
+                    .append(browser.getUrl())
+                    .append(" - ")
+                    .append(browser.getTimestamp());
+
+            if (i != browserList.size() - 1) {
+                report.append(", ");
+            }
+        }
+
+        String reportString = report.toString();
+
+        if (report.length() <= 0) {
+            System.out.println("No requests have been made to the server yet. The browser stack is empty.");
+        } else {
+            System.out.println("All requests made to the server:");
+            System.out.println(reportString);
+        }
+
+        return reportString;
+    }
+
+    public String getUndoBrowser() {
+        Browser browser = getRestClient().undoBrowser();
+
+        StringBuilder report = new StringBuilder();
+        report.append(browser.getCalledMethod())
+                .append(" - ")
+                .append(browser.getUrl())
+                .append(" - ")
+                .append(browser.getTimestamp());
+
+        if (browser.getCalledMethod() != null) {
+            String reportString = report.toString();
+            System.out.println("The last request made to the server:");
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("Cannot undo any further. The browser stack is empty.");
+            return "";
+        }
+    }
+
+    public String getRedoBrowser() {
+        Browser browser = getRestClient().redoBrowser();
+
+        StringBuilder report = new StringBuilder();
+        report.append(browser.getCalledMethod())
+                .append(" - ")
+                .append(browser.getUrl())
+                .append(" - ")
+                .append(browser.getTimestamp());
+
+        if (browser.getCalledMethod() != null) {
+            String reportString = report.toString();
+            System.out.println("The last request made to the server:");
+            System.out.println(reportString);
+            return reportString;
+        } else {
+            System.out.println("Cannot redo any further. You reached the top of the browser stack.");
+            return "";
+        }
+    }
+}
+/* todo: remove if top works
 
     public String getBrowserPeekReport() {
         Browser browser = getRestClient().getBrowserPeek();
@@ -323,4 +660,6 @@ public class HTTPRestCLIApplication {
     }
 
 }
+
+ */
 
