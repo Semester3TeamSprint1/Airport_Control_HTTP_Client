@@ -343,8 +343,8 @@ public String generateCityReport() {
         }
     }
 
-    public String getAircraftPassengerBeenOnReport(int id) {
-        List<Aircraft> aircraftList = getRestClient().getAircraftPassengerBeenOn(id);
+    public String getAircraftsPassengerAttendanceReport(int id) {
+        List<Aircraft> aircraftList = getRestClient().getAircraftsPassengerAttendanceReport(id);
         StringBuilder report = new StringBuilder();
 
         for (int i = 0; i < aircraftList.size(); i++) {

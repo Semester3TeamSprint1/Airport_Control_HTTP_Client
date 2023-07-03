@@ -37,7 +37,7 @@ public class App {
         } else if (args[0].equalsIgnoreCase("airportByCity")) {
             cliApp.getAirportsByCityIdReport(Integer.parseInt(args[1]));
         } else if (args[0].equalsIgnoreCase("passengerAircraftList")) {
-            cliApp.getAircraftPassengerBeenOnReport(Integer.parseInt(args[1]));
+            cliApp.getAircraftsPassengerAttendanceReport(Integer.parseInt(args[1]));
         } else if (args[0].equalsIgnoreCase("passengerAirportList")) {
             cliApp.getAirportPassengerVisitedReport(Integer.parseInt(args[1]));
         } else if (args[0].equalsIgnoreCase("browser")) {

@@ -196,7 +196,7 @@ public class RESTClient {
         return passenger;
     }
 
-    public List<Aircraft> getAircraftPassengerBeenOn(int id) {
+    public List<Aircraft> getAircraftsPassengerAttendanceReport(int id) {
         List<Aircraft> aircraftList = new ArrayList<>();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(baseURL + "passenger/" + id + "/getAircraft")).build();
 
