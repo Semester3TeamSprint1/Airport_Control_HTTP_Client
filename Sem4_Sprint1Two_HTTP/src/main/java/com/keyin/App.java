@@ -13,72 +13,47 @@ public class App {
         cliApp.setRestClient(new RESTClient());
 
 
-
-        if (args.length > 0) {
-
-            switch (args[0]) {
-
-                // Aircraft commands
-                case "aircraft":
-                    cliApp.generateAircraftReport();
-                    break;
-                case "aircraftById":
-                    cliApp.getAircraftByIdReport(Integer.parseInt(args[1]));
-                    break;
-
-                // Airport commands
-                case "airport":
-                    cliApp.generateAirportReport();
-                    break;
-                case "airportById":
-                    cliApp.getAirportByIdReport(Integer.parseInt(args[1]));
-                    break;
-                case "airportByCityId":
-                    cliApp.getAirportsByCityIdReport(Integer.parseInt(args[1]));
-                    break;
-
-                // City commands
-                case "city":
-                    cliApp.generateCityReport();
-                    break;
-                case "cityById":
-                    cliApp.getCityByIdReport(Integer.parseInt(args[1]));
-                    break;
-
-                // Passenger commands
-                case "passenger":
-                    cliApp.generatePassengerReport();
-                    break;
-                case "passengerById":
-                    cliApp.getPassengerByIdReport(Integer.parseInt(args[1]));
-                    break;
-                case "passengerAircraft":
-                    cliApp.getAircraftPassengerBeenOnReport(Integer.parseInt(args[1]));
-                    break;
-                case "passengerAirport":
-                    cliApp.getAirportPassengerVisitedReport(Integer.parseInt(args[1]));
-                    break;
-
-                // Browser commands
-                case "browser":
-                    cliApp.getBrowserPeekReport();
-                    break;
-                case "allBrowser":
-                    cliApp.getBrowserDataReport();
-                    break;
-                case "undoBrowser":
-                    cliApp.getUndoBrowser();
-                    break;
-                case "redoBrowser":
-                    cliApp.getRedoBrowser();
-                    break;
-                default:
-                    System.out.println();
-                    System.out.println("** Sorry, Unknown args **");
-            }
+        if(args[0].equalsIgnoreCase("generate")){
+            cliApp.generateAircraftReport();
+            cliApp.generateAirportReport();
+            cliApp.generateCityReport();
+            cliApp.generatePassengerReport();
+        } else if (args[0].equalsIgnoreCase("aircrafts")) {
+            cliApp.generateAircraftReport();
+        } else if (args[0].equalsIgnoreCase("airports")) {
+            cliApp.generateAirportReport();
+        } else if (args[0].equalsIgnoreCase("cities")) {
+            cliApp.generateCityReport();
+        } else if (args[0].equalsIgnoreCase("passengers")) {
+            cliApp.generatePassengerReport();
+        } else if (args[0].equalsIgnoreCase("aircraftSearch")) {
+            cliApp.getAircraftByIdReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("airportSearch")) {
+            cliApp.getAirportByIdReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("citySearch")) {
+            cliApp.getCityByIdReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("passengerSearch")) {
+            cliApp.getPassengerByIdReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("airportByCity")) {
+            cliApp.getAirportsByCityIdReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("passengerAircraftList")) {
+            cliApp.getAircraftPassengerBeenOnReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("passengerAirportList")) {
+            cliApp.getAirportPassengerVisitedReport(Integer.parseInt(args[1]));
+        } else if (args[0].equalsIgnoreCase("browser")) {
+            cliApp.getBrowserPeekReport();
+        } else if (args[0].equalsIgnoreCase("browserData")) {
+            cliApp.getBrowserDataReport();
+        } else if (args[0].equalsIgnoreCase("undo")){
+            cliApp.getUndoBrowser();
+        } else if (args[0].equalsIgnoreCase("redo")) {
+            cliApp.getRedoBrowser();
+        } else if (args[0].length() < 1){
+            System.out.println();
+            System.out.println("Error: Must add arguments to access data!");
         } else {
             System.out.println();
-            System.out.println("** You must edit configuration and add arguments to access data ** ");
+            System.out.println("Error: Must add valid arguments!");
         }
 
     }
