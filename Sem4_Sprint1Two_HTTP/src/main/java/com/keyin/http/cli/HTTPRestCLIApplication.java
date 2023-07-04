@@ -305,7 +305,7 @@ public String generateCityReport() {
 
         for (int i = 0; i < passengerList.size(); i++) {
             Passenger passenger = passengerList.get(i);
-            report.append(passenger.getFirstname())
+            report.append(passenger.getfirstName())
                     .append(" ")
                     .append(passenger.getLastName())
                     .append(" - ")
@@ -326,8 +326,8 @@ public String generateCityReport() {
         Passenger passenger = getRestClient().getPassengerById(id);
         StringBuilder report = new StringBuilder();
 
-        if (passenger.getFirstname() != null) {
-            report.append(passenger.getFirstname())
+        if (passenger.getfirstName() != null) {
+            report.append(passenger.getfirstName())
                     .append(" ")
                     .append(passenger.getLastName())
                     .append(" - ")
@@ -403,7 +403,7 @@ public String generateCityReport() {
         StringBuffer report = new StringBuffer();
 
         for (Passenger passenger : passengerList) {
-            report.append(passenger.getFirstname() + " " + passenger.getLastName());
+            report.append(passenger.getfirstName() + " " + passenger.getLastName());
             report.append(" - ");
             report.append(passenger.getPhoneNumber());
 
@@ -419,11 +419,11 @@ public String generateCityReport() {
     public String getPassengerByIdReport(int id) {
         Passenger passenger = getRestClient().getPassengerById(id);
         StringBuffer report = new StringBuffer();
-        report.append(passenger.getFirstname() + " " + passenger.getLastName());
+        report.append(passenger.getfirstName() + " " + passenger.getLastName());
         report.append(" - ");
         report.append(passenger.getPhoneNumber());
 
-        if (passenger.getFirstname() != null){
+        if (passenger.getfirstName() != null){
             System.out.println("Passenger with id: " + id);
             System.out.println(report.toString());
         } else {
