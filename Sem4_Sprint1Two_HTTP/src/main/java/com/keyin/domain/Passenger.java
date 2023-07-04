@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Passenger {
     private Long id;
-    private String firstname;
+    private String firstName;
     private String lastName;
     private String phoneNumber;
     private List<Integer> aircraftIdsList = new ArrayList<>();
@@ -20,12 +20,12 @@ public class Passenger {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setfirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
